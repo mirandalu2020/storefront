@@ -7,7 +7,7 @@ function Category() {
   console.log(category.categoriesList)
 
   const handleClick = (e) =>{
-    console.log('SELECTED, ', e.target.value)
+    // console.log('SELECTED, ', e.target.value)
     dispatch({
       type: 'SELECT_CATEGORY',
       payload: e.target.value
