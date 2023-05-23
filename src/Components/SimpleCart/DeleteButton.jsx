@@ -7,8 +7,9 @@ function DeleteButton({item}) {
 
   const handleDelete = (e) => {
     let parsedItem = JSON.parse(e.target.value)
+    console.log(parsedItem);
     dispatch({
-      type:'"DELETE_ITEM"',
+      type:'DELETE_ITEM',
       payload: parsedItem
     })
     console.log(parsedItem)
@@ -16,7 +17,7 @@ function DeleteButton({item}) {
 
   return(
     <>
-      <Button variant="outlined" color="error" value={JSON.stringify(item)} onClick={(e)=> handleDelete(e)}>
+      <Button variant="outlined" color="error" value={JSON.stringify(item)} onClick={handleDelete}>
         Delete
       </Button>
       </>
