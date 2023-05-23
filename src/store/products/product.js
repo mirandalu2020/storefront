@@ -35,13 +35,21 @@ function productReducer(state=initialState, action){
       }
 
       case "DELETE_ITEM":
-        console.log('DELETE ACTION', action.payload)
-        let deletedItem = state.cart.filter(product => product === action.payload);
-        // console.log(action.payload)
-        console.log('CART AFTER DELETION', deletedItem)
+        const productRestock = products.map(item => {
+          if (item.name===action.payload.name && item.category === action.payload.category) {
+            item.inventoryCount += 1;
+          }
+          return item
+        })
+        const payloadArr = state.cart.map(item => item.name)
+        let deletedItemIndex = payloadArr.indexOf(action.payload.name);
+        console.log(action.payload, deletedItemIndex)
+        let deletedItem = state.cart.toSpliced(deletedItemIndex, 1);
+
         return {
           ...state,
-          cart: deletedItem
+          cart: deletedItem,
+          product: [...state.products, productRestock]
         }
 
     default:

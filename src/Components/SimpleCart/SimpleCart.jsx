@@ -150,8 +150,8 @@ function SimpleCart() {
                     <SellIcon />
                   </ListItemIcon>
                   <ListItemText primary={item.name} />
-                <DeleteButton item={item}/>
                 </ListItemButton>
+                <DeleteButton item={item}/>
               </ListItem>
             ))}
           </List>
