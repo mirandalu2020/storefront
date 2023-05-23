@@ -5,6 +5,7 @@ import Category from './Components/Categories/Categories';
 import Header from './Components/Header/Header'
 
 import './App.css';
+import SimpleCart from './Components/SimpleCart/SimpleCart';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <Header />
     <Provider store={createStore()}>
       <Category />
+      <SimpleCart />
       <Products />
     </Provider>
     </>

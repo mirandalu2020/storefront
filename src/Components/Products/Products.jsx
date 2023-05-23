@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -7,12 +7,22 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function DisplayProducts() {
 
   let productDisplayed = useSelector((currentState) => currentState.productReducer)
-  console.log('DISPLAYED: ', productDisplayed)
+  const dispatch = useDispatch();
+  // console.log('DISPLAYED: ', productDisplayed)
 
+  const addToCart = (e) =>{
+    let parsedItem = JSON.parse(e.currentTarget.value)
+    // console.log(parsedItem);
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: parsedItem
+    })
+  }
 
   return (
     productDisplayed.displayedProducts.map((item, idx) => 
@@ -41,6 +51,9 @@ function DisplayProducts() {
             {`$ ${item.price}`}
           </Typography>
         </CardContent>
+        <IconButton aria-label="add to favorites" onClick={addToCart} value={JSON.stringify(item)}>
+          <FavoriteIcon />
+        </IconButton>
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             {`Count: ${item.inventoryCount}`}

@@ -29,12 +29,12 @@ To get started with the Storefront Application, follow these steps:
 
 1. Begin by creating your application using create-react-app command or any preferred React setup.
 2. Install Material UI as a dependency in your project to leverage its pre-built UI components and styles.
-3. Write an <App /> component that will serve as the container for all sub-components of this application.
-4. Create a <Categories /> component that:
+3. Write an `<App />` component that will serve as the container for all sub-components of this application.
+4. Create a `<Categories />` component that:
 
 - Shows a list of all categories fetched from the state.
 - Dispatches an action when a category is clicked to activate it.
-- Develop a <Products /> component that:
+- Develop a `<Products />` component that:
 - Displays a list of products associated with the selected category.
 - Update the product list dynamically based on the selected category.
 - Structure your project in a scalable manner, separating components into their respective files and folders.
