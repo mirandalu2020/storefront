@@ -1,0 +1,100 @@
+[
+  {
+      "category": "office",
+      "name": "Stickies",
+      "description": "Stickies in the office department",
+      "price": 10,
+      "inventoryCount": 8
+  },
+  {
+      "category": "food",
+      "name": "Pizza",
+      "description": "Pizza in the food department",
+      "price": 1.99,
+      "inventoryCount": 290
+  },
+  {
+      "category": "food",
+      "name": "Cookies",
+      "description": "Cookies in the food department",
+      "price": 2.38,
+      "inventoryCount": 59
+  },
+  {
+      "category": "electronics",
+      "name": "Plasma TV",
+      "description": "Plasma TV in the electronics department",
+      "price": 1000,
+      "inventoryCount": 5941
+  },
+  {
+      "category": "electronics",
+      "name": "iPad",
+      "description": "iPad in the electronics department",
+      "price": 1000,
+      "inventoryCount": -139
+  },
+  {
+      "category": "clothes",
+      "name": "Fancy Pants",
+      "description": "Fancy Pants in the clothes department",
+      "price": 1000,
+      "inventoryCount": 83
+  },
+  {
+      "category": "clothes",
+      "name": "Green Jeans",
+      "description": "Green Jeans in the clothes department",
+      "price": 1000,
+      "inventoryCount": 89
+  },
+  {
+      "category": "games",
+      "name": "Monopoly",
+      "description": "Monopoly in the games department",
+      "price": 1000,
+      "inventoryCount": -92
+  },
+  {
+      "category": "games",
+      "name": "Smash Bros",
+      "description": "Smash Bros in the games department",
+      "price": 1000,
+      "inventoryCount": -41
+  },
+  {
+      "category": "weapons",
+      "name": "Samurai Sword",
+      "description": "Samurai Sword in the weapons department",
+      "price": 1000,
+      "inventoryCount": -94
+  },
+  {
+      "category": "weapons",
+      "name": "Knife",
+      "description": "Knife in the weapons department",
+      "price": 1000,
+      "inventoryCount": -69
+  },
+  {
+      "category": "electronics",
+      "name": "camera",
+      "description": "camera in the electronics department",
+      "price": 109.99,
+      "inventoryCount": 2159
+  },
+  {
+      "category": "electronics",
+      "name": "TV",
+      "description": "TV in the electronics department",
+      "price": 1099.99,
+      "inventoryCount": 2177
+  },
+  {
+      "category": "food",
+      "name": "Banana",
+      "description": "Banana in the food department",
+      "price": 0.99,
+      "inventoryCount": 2179
+  }
+]

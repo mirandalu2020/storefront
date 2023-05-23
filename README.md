@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Storefront Application using Redux and MUI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Storefront Application! This is the first phase of the application build, written in React. The goal of this phase is to set up the basic structure, styling, and functionality of the application. The application will provide a user-friendly interface for browsing and shopping for products in various categories. The state management will be handled using Redux to ensure scalability and efficient handling of data.
 
-## Available Scripts
+## User Stories
 
-In the project directory, you can run:
+As a user, here are the features you can expect in this phase:
 
-### `npm start`
+1. View a list of available product categories in the store for easy browsing.
+2. Choose a category and see a list of all available products matching that category.
+3. Enjoy a clean and user-friendly interface to confidently navigate and shop in the online store.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technical Details
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+As developers, here are the high-level development tasks that address the user requirements:
 
-### `npm test`
+1. Create a visually appealing site using Material UI, a popular UI framework for React.
+2. Utilize a Redux Store to manage the state of categories and items in the store.
+3. Display a list of categories from the state.
+4. When a user selects a category, visually indicate the selection and show a list of products associated with that category.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Application Architecture
 
-### `npm run build`
+![UML for storefront app](UML/store-app.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To get started with the Storefront Application, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Begin by creating your application using create-react-app command or any preferred React setup.
+2. Install Material UI as a dependency in your project to leverage its pre-built UI components and styles.
+3. Write an <App /> component that will serve as the container for all sub-components of this application.
+4. Create a <Categories /> component that:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Shows a list of all categories fetched from the state.
+- Dispatches an action when a category is clicked to activate it.
+- Develop a <Products /> component that:
+- Displays a list of products associated with the selected category.
+- Update the product list dynamically based on the selected category.
+- Structure your project in a scalable manner, separating components into their respective files and folders.
 
-### `npm run eject`
+### Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To run the Storefront Application locally, follow these steps:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository: git clone https://github.com/your/repository.git.
+2. Navigate to the project directory: cd storefront-app.
+3. Install the dependencies: npm install.
+4. Start the development server: npm start.
+5. Open your browser and visit http://localhost:3000 to access the application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Feedback and Contributions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+We welcome feedback and contributions to enhance the Storefront Application. If you encounter any issues or have suggestions for improvement, please open an issue on the project repository. Feel free to submit pull requests with your proposed changes.
 
-## Learn More
+### License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The Storefront Application is released under the MIT License.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
