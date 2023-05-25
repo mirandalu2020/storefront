@@ -1,10 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
+import * as React from 'react';
+import {Button, Container} from '@mui/material';
+
+import './categories.css'
+
 
 function Category() {
 
   let category = useSelector((currentState) => currentState.categoryReducer)
   const dispatch = useDispatch();
-  console.log(category.categoriesList)
+  // console.log(category.categoriesList)
 
   const handleClick = (e) =>{
     // console.log('SELECTED, ', e.target.value)
@@ -15,17 +20,17 @@ function Category() {
     // console.log(category.activeCategory)
   }
 
-  return(
-    category.categoriesList.map(item => {
-      // console.log(item)
-      return (
-        <div>
-          <button onClick={handleClick} value={item.displayedName}>{item.displayedName}</button>
-          {/* <li>{item.displayedName}</li> */}
-        </div>
-      )
-    })
-  )
-}
 
+
+  return(
+    <Container id='categories-container'>
+    {category.categoriesList.map(item => 
+      {return (
+        <Button onClick={handleClick} value={item}>{item}</Button>
+      )}
+      )}
+      </Container>
+  )
+
+}
 export default Category;

@@ -1,76 +1,98 @@
 import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react';
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import { getProducts, addToCart } from './../../store/products/populateProducts'
+import {Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Container, Grid } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import './product.css'
+
 
 function DisplayProducts() {
 
-  let productDisplayed = useSelector((currentState) => currentState.productReducer)
-  const dispatch = useDispatch();
-  // console.log('DISPLAYED: ', productDisplayed)
+  const [displayed, setDisplayed] = useState([]);
 
-  const addToCart = (e) =>{
-    let parsedItem = JSON.parse(e.currentTarget.value)
-    // console.log(parsedItem);
-    dispatch({
-      type: 'ADD_TO_CART',
-      payload: parsedItem
-    })
+  let activeCategory = useSelector((currentState) => currentState.categoryReducer.activeCategory);
+  let productDisplayed = useSelector((currentState) => currentState.productReducer);
+  const dispatch = useDispatch();
+  console.log('DISPLAYED: ', productDisplayed)
+
+  const handleClick = (e) =>{
+    // console.log(e.currentTarget.value)
+    let product = JSON.parse(e.currentTarget.value)
+    console.log(product)
+    dispatch(addToCart(product))
   }
 
-  return (
-    productDisplayed.displayedProducts.map((item, idx) => 
-    {return(
+ useEffect( ()=> {
+    dispatch(getProducts())
+  }, []);
 
-      <div key = {idx}>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardHeader
-          action={<IconButton aria-label="settings">
-            
-          </IconButton>}
-          title={item.name}
-          subheader={item.category} />
-        <CardMedia
-          component="img"
-          height="194"
-          image={`https://picsum.photos/id/${idx*10}/200/300`}
-          alt="Paella dish" />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {item.description}
-          </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {`$ ${item.price}`}
-          </Typography>
-        </CardContent>
-        <IconButton aria-label="add to favorites" onClick={addToCart} value={JSON.stringify(item)}>
-          <FavoriteIcon />
-        </IconButton>
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {`Count: ${item.inventoryCount}`}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+  useEffect(()=>{
+    let displayedProducts = productDisplayed.products.filter(product => product.category === activeCategory)
+    setDisplayed(displayedProducts)
+  }, [activeCategory, productDisplayed.products])
+  
+
+  return (
+    <Container id="product-container" sx={{ flexGrow: 1 }}>
+<Grid container
+  direction="row"
+  justifyContent="space-evenly"
+  alignItems="baseline"
+  spacing={{ xs: 1, md: 2 }} 
+  columns={{ xs: 6, sm: 10, md: 12 }}
+  >
+    {displayed.map((item, idx) => 
+    {return(
+      <>
+      <Grid item xs={4}>
+      <div key={idx}>
+        <Card >
+          <CardHeader
+            action={<IconButton aria-label="settings">
+
+            </IconButton>}
+            title={item.name}
+            subheader={item.category} />
+          <CardMedia
+            component="img"
+            height="194"
+            image={`https://picsum.photos/id/${idx * 100}/200/300`}
+            alt="Paella dish" />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {item.description}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {`$ ${item.price}`}
+            </Typography>
+          </CardContent>
+          <IconButton aria-label="add to favorites" onClick={handleClick} value={JSON.stringify(item)}>
+            <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
-            
-          </IconButton>
-        </CardActions>
-      </Card>
-    </div>
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {`Count: ${item.inStock}`}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+            </IconButton>
+            <IconButton aria-label="share">
+
+            </IconButton>
+          </CardActions>
+        </Card>
+      </div>
+      </Grid>
+      </>
     )
     }
-  )
+    )}
+    </Grid>
+    </Container>
   )
 
   }
