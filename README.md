@@ -23,7 +23,7 @@ As developers, here are the high-level development tasks that address the user r
 
 ### Application Architecture
 
-![UML for storefront app](UML/store-app.png)
+![UML for storefront app](UML/categories.gif)
 
 To get started with the Storefront Application, follow these steps:
 
@@ -56,7 +56,3 @@ We welcome feedback and contributions to enhance the Storefront Application. If 
 ### License
 
 The Storefront Application is released under the MIT License.
-
-
-
-
