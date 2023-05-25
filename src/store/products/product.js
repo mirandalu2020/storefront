@@ -1,4 +1,4 @@
-const products = require('./products.json')
+
 const { fillProducts } = require('./populateProducts')
 
 const initialState = {

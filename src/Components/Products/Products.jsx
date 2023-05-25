@@ -25,6 +25,7 @@ function DisplayProducts() {
 
  useEffect( ()=> {
     dispatch(getProducts())
+    // eslint-disable-next-line
   }, []);
 
   useEffect(()=>{
