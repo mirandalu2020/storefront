@@ -21,6 +21,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SellIcon from '@mui/icons-material/Sell';
+import AdbIcon from '@mui/icons-material/Adb';
 
 import DeleteButton from './DeleteButton'
 
@@ -101,9 +102,25 @@ function SimpleCart() {
         <CssBaseline />
         <AppBar position="fixed" open={open}>
           <Toolbar>
-            <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-              Persistent drawer
-            </Typography>
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        <Typography
+          variant="h6"
+          noWrap
+          component="a"
+          href="/"
+          sx={{
+            mr: 2,
+            display: { xs: 'none', md: 'flex' },
+            fontFamily: 'monospace',
+            fontWeight: 700,
+            letterSpacing: '.3rem',
+            color: 'inherit',
+            textDecoration: 'none',
+          }}
+        >
+          LOGO
+        </Typography>
+
 
             <IconButton aria-label="add to favorites">
               <ShoppingCartIcon />
