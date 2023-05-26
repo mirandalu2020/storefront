@@ -16,7 +16,7 @@ function ProductDetails() {
   useEffect(() => {
     let result = products.filter(item => item._id === id);
     setCurrentProduct(result);
-  }, [])
+  }, [id, products])
 
   return (
     <Container>
