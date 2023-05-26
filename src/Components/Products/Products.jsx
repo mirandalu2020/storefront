@@ -2,8 +2,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react';
 import * as React from 'react';
 import { getProducts, addToCart } from './../../store/products/populateProducts'
-import {Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Container, Grid } from '@mui/material';
+import {Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Container, Grid} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link } from "react-router-dom";
+
 import './product.css'
 
 
@@ -14,7 +16,7 @@ function DisplayProducts() {
   let activeCategory = useSelector((currentState) => currentState.categoryReducer.activeCategory);
   let productDisplayed = useSelector((currentState) => currentState.productReducer);
   const dispatch = useDispatch();
-  console.log('DISPLAYED: ', productDisplayed)
+  // console.log('DISPLAYED: ', productDisplayed)
 
   const handleClick = (e) =>{
     // console.log(e.currentTarget.value)
@@ -39,19 +41,18 @@ function DisplayProducts() {
 <Grid container
   direction="row"
   justifyContent="space-evenly"
-  alignItems="baseline"
-  spacing={{ xs: 1, md: 2 }} 
+  alignItems="end"
+  spacing={{ xs: 1 }} 
   columns={{ xs: 6, sm: 10, md: 12 }}
   >
     {displayed.map((item, idx) => 
     {return(
       <>
       <Grid item xs={4}>
-      <div key={idx}>
-        <Card >
+        <Link to={`/product/${item._id}`}>
+        <Card key={item._id}>
           <CardHeader
             action={<IconButton aria-label="settings">
-
             </IconButton>}
             title={item.name}
             subheader={item.category} />
@@ -60,7 +61,7 @@ function DisplayProducts() {
             height="194"
             image={`https://picsum.photos/id/${idx * 100}/200/300`}
             alt="Paella dish" />
-          <CardContent>
+          <CardContent height='30px'>
             <Typography variant="body2" color="text.secondary">
               {item.description}
             </Typography>
@@ -86,8 +87,12 @@ function DisplayProducts() {
             </IconButton>
           </CardActions>
         </Card>
-      </div>
+        </Link>
       </Grid>
+
+      {/* <Routes>
+        <Route path="/product/:id" Component={ ProductDetails }/>
+      </Routes> */}
       </>
     )
     }

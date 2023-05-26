@@ -23,11 +23,11 @@ const updateProducts = async (baseUrl, id, data) => {
 }
 
 export const getProducts = () => async(dispatch) => {
-  let requestProducts = await fetch('https://api-js401.herokuapp.com/api/v1/products', {
+  let requestProducts = await fetch(`https://api-js401.herokuapp.com/api/v1/products`, {
   method: 'GET',
 });
   const productsReceived = await requestProducts.json();
-  console.log('GET PRODUCT', productsReceived)
+  // console.log('GET PRODUCT', productsReceived)
 
   return dispatch({
     type: 'FETCH_PRODUCTS',
