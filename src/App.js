@@ -1,21 +1,29 @@
 import { Provider } from 'react-redux';
-import createStore from './store';
-import Products from './Components/Products/Products'
-import Category from './Components/Categories/Categories';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import createStore from './store';
+// import Products from './Components/Products/Products'
+// import Category from './Components/Categories/Categories';
 import Header from './Components/Header/Header'
-
+import Storefront from './Components/Storefront/Storefront';
+import ProductDetails from './Components/Products/ProductDetails';
+import ShoppingCart from './Components/ShoppingCart/ShoppingCart.jsx'
+import store from './store';
 import './App.css';
-import SimpleCart from './Components/SimpleCart/SimpleCart';
 
 function App() {
   return (
     <>
     <Header />
-    <Provider store={createStore()}>
-      <Category />
-      <SimpleCart />
-      <Products />
-    </Provider>
+    {/* <Provider store={createStore(reducers, applyMiddleware(thunk))}> */}
+    <Provider store={store()}>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" Component={ Storefront }/>
+        <Route exact path="/cart" Component={ ShoppingCart } />
+        <Route path="/product/:id" Component={ ProductDetails }/>
+      </Routes>
+      </BrowserRouter>
+      </Provider>
     </>
   );
 }

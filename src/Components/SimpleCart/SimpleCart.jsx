@@ -98,7 +98,6 @@ function SimpleCart() {
 
     <>
       <Box sx={{ display: 'flex' }}>
-
         <CssBaseline />
         <AppBar position="fixed" open={open}>
           <Toolbar>
@@ -120,21 +119,20 @@ function SimpleCart() {
         >
           LOGO
         </Typography>
-
-
             <IconButton aria-label="add to favorites">
-              <ShoppingCartIcon />
-              <div>{itemCount}</div>
+
             </IconButton>
 
             <IconButton
               color="inherit"
-              aria-label="open drawer"
+              // aria-label="open drawer"
+              aria-label="add to favorites"
               edge="end"
               onClick={handleDrawerOpen}
               sx={{ ...(open && { display: 'none' }) }}
             >
-              <MenuIcon />
+                            <ShoppingCartIcon />
+              <div>{itemCount}</div>
             </IconButton>
           </Toolbar>
         </AppBar>
