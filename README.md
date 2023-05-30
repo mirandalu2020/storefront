@@ -2,7 +2,7 @@
 
 Welcome to the Storefront Application! This is the first phase of the application build, written in React. The goal of this phase is to set up the basic structure, styling, and functionality of the application. The application will provide a user-friendly interface for browsing and shopping for products in various categories. The state management will be handled using Redux to ensure scalability and efficient handling of data.
 
-[Deoloyed site]('https://main--transcendent-monstera-1d9151.netlify.app/')
+[Deoloyed site](https://main--transcendent-monstera-1d9151.netlify.app/)
 
 ## User Stories
 
