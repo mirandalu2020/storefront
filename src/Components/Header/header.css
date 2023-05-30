@@ -1,0 +1,12 @@
+:root {
+  --font: 'Pangolin', cursive;
+}
+
+.header-container {
+  font-family: var(--font)
+}
+
+h1 {
+  margin: 0 auto 0 auto;
+  font-family: var(--font)
+}

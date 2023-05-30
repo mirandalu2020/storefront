@@ -1,7 +1,16 @@
+:root {
+  --font: 'Pangolin', cursive;
+}
+
 #categories-container{
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   width: 80%;
   align-items: center;
+
+}
+
+button {
+  font-family: var(--font);
 }

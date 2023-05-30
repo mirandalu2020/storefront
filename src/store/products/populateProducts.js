@@ -22,17 +22,18 @@ const updateProducts = async (baseUrl, id, data) => {
   return updatedProduct;
 }
 
-export const getProducts = () => async(dispatch) => {
-  let requestProducts = await fetch(`https://api-js401.herokuapp.com/api/v1/products`, {
+export const getProducts = (id='') => async(dispatch) => {
+  let requestProducts = await fetch(`https://api-js401.herokuapp.com/api/v1/products/${id}`, {
   method: 'GET',
 });
   const productsReceived = await requestProducts.json();
-  // console.log('GET PRODUCT', productsReceived)
+  console.log('GET PRODUCT', productsReceived)
 
-  return dispatch({
-    type: 'FETCH_PRODUCTS',
-    payload: productsReceived
-  })
+    dispatch({
+      type: 'FETCH_PRODUCTS',
+      payload: productsReceived
+    })
+  
 }
 
 export const addToCart = (product) => async(dispatch) => {

@@ -19,7 +19,7 @@ function productReducer(state = initialState, action) {
       for (let item of action.payload.results) {
         fillProducts(productArr, item._id, item.category, item.name, `${item.name} in the ${item.category} department`, item.price, item.inStock)
       }
-      console.log('PRODUCTS IN STATE WITH GET, ', productArr)
+      // console.log('PRODUCTS IN STATE WITH GET, ', productArr)
       return {
         ...state,
         products: productArr
@@ -41,27 +41,28 @@ function productReducer(state = initialState, action) {
         }
         return item;
       })
+      let cartItems = [...state.cart, action.payload];
       return {
         ...state,
         displayedProducts: [action.payload],
         products: productInventoryChange,
-        cart: [...state.cart, action.payload]
+        cart: cartItems
       }
 
     case "DELETE_ITEM":
       console.log('DELETED', action.payload)
-      console.log(state)
+      // console.log(state)
       const productRestock = state.products.map(item => {
         if (item._id === action.payload._id) {
           item.inStock = action.payload.inStock;
         }
         return item;
-      })
+      });
       const payloadArr = state.cart.map(item => item._id)
       let deletedItemIndex = payloadArr.indexOf(action.payload._id);
-      console.log(deletedItemIndex)
+      // console.log(deletedItemIndex)
       let deletedItem = state.cart.toSpliced(deletedItemIndex, 1);
-
+      console.log('DELTED ITEM', deletedItem)
       return {
         ...state,
         cart: deletedItem,
