@@ -4,3 +4,17 @@
   column-gap: 10px;
   row-gap: 10px;
 }
+
+.product-card {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  display: grid;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+}
+
+.add-to-cart {
+  width: 100%;
+}

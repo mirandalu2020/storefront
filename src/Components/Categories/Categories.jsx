@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import * as React from 'react';
-import {Button, Container} from '@mui/material';
+import {Button, Container, Typography} from '@mui/material';
 
 import './categories.css'
 
@@ -21,12 +21,13 @@ function Category() {
   }
 
 
-
   return(
     <Container id='categories-container'>
     {category.categoriesList.map(item => 
       {return (
+        <Typography>
         <Button onClick={handleClick} value={item}>{item}</Button>
+        </Typography>
       )}
       )}
       </Container>

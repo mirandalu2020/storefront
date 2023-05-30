@@ -1,0 +1,20 @@
+h2{
+  text-align: center;
+}
+
+.product-image {
+  margin: 0 auto;
+  display: block;
+}
+
+.product-attributes {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  text-align: center;
+  align-items: center;
+}
+
+.add-to-cart {
+  width: 20%;
+}

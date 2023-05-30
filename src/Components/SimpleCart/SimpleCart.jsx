@@ -1,89 +1,43 @@
 import { useSelector } from "react-redux";
-import { useState } from 'react'
-import { useEffect } from "react";
+import { useState, useEffect } from 'react'
+import { calculateTotal } from './../../store/products/productPrice'
 import * as React from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
+// import Box from '@mui/material/Box';
+import { Box, Button } from '@mui/material';
 import Drawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CloseIcon from '@mui/icons-material/Close';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SellIcon from '@mui/icons-material/Sell';
-import AdbIcon from '@mui/icons-material/Adb';
 
+import { Link } from 'react-router-dom'
 import DeleteButton from './DeleteButton'
+import './simpleCart.css'
+
 
 function SimpleCart() {
 
   const cart = useSelector((currentState) => currentState.productReducer.cart);
   // console.log(cart);
-  const [itemCount, setItemCount] = useState(cart.length)
+  const [itemCount, setItemCount] = useState(cart.length);
+  const [totalCost, setTotalCost] = useState(0)
+
+
 
   useEffect(() => {
     console.log(cart)
+    let total = calculateTotal(cart)
+    setTotalCost(total)
     setItemCount(cart.length)
+
   }, [cart])
 
-  const drawerWidth = 240;
-
-  const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
-      flexGrow: 1,
-      padding: theme.spacing(3),
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      marginRight: -drawerWidth,
-      ...(open && {
-        transition: theme.transitions.create('margin', {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
-        marginRight: 0,
-      }),
-    }),
-  );
-
-  const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-  })(({ theme, open }) => ({
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    ...(open && {
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginRight: drawerWidth,
-    }),
-  }));
-
-  const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-start',
-  }));
-
-  const theme = useTheme();
+  const drawerWidth = 300;
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -95,50 +49,19 @@ function SimpleCart() {
   };
 
   return (
-
     <>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position="fixed" open={open}>
-          <Toolbar>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-        <Typography
-          variant="h6"
-          noWrap
-          component="a"
-          href="/"
-          sx={{
-            mr: 2,
-            display: { xs: 'none', md: 'flex' },
-            fontFamily: 'monospace',
-            fontWeight: 700,
-            letterSpacing: '.3rem',
-            color: 'inherit',
-            textDecoration: 'none',
-          }}
+      <Box sx={{ display: 'flex' }} width='50px'>
+        <IconButton
+          open={open}
+          color="inherit"
+          aria-label="add to cart"
+          edge="end"
+          onClick={handleDrawerOpen}
+          // sx={{ ...(open) }}
         >
-          LOGO
-        </Typography>
-            <IconButton aria-label="add to favorites">
-
-            </IconButton>
-
-            <IconButton
-              color="inherit"
-              // aria-label="open drawer"
-              aria-label="add to favorites"
-              edge="end"
-              onClick={handleDrawerOpen}
-              sx={{ ...(open && { display: 'none' }) }}
-            >
-                            <ShoppingCartIcon />
-              <div>{itemCount}</div>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Main open={open}>
-          <DrawerHeader />
-        </Main>
+          <ShoppingCartIcon />
+          <div>{itemCount}</div>
+        </IconButton>
         <Drawer
           sx={{
             width: drawerWidth,
@@ -151,28 +74,34 @@ function SimpleCart() {
           anchor="right"
           open={open}
         >
-          <DrawerHeader>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
-          </DrawerHeader>
+          <Box className='drawer-header' display='flex' justifyContent='space-between'>
+          <Link to='/cart'> 
+          <Button width='70%'>View Cart</Button>
+            </Link>
+          <Button onClick={handleDrawerClose} width='30px'>
+            <CloseIcon />
+          </Button>
+          </Box>
+
           <Divider />
           <List>
             {cart.map((item, index) => (
-              <ListItem key={item.name + index} >
-                <ListItemButton>
-                  <ListItemIcon>
+              <ListItem key={item.name + index} display='flex' justifyContent='space-between'>
                     <SellIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={item.name} />
-                </ListItemButton>
-                <DeleteButton item={item}/>
+                  <ListItemText primary={item.name} width='30px' margin='5px'/>
+                  <ListItemText primary={item.price} width='30px' margin='5px' alignSelf='flex-end'/>
+                <DeleteButton item={item} alignSelf='flex-end'/>
               </ListItem>
             ))}
+            <ListItem style={{display:'flex', justifyContent:'flex-end'}}>
+              Total: $ {totalCost}
+            </ListItem>
           </List>
           <Divider />
         </Drawer>
-      </Box></>
+      </Box>
+
+    </>
   );
 }
 

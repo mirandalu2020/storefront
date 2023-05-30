@@ -7,9 +7,7 @@ function Storefront() {
 
   return (
       <>
-      <Category />
       <Products />
-      <ProductDetails />
       </>
   )
 
